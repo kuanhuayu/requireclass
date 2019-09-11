@@ -1,0 +1,19 @@
+{
+  "name": "requireclass",
+  "version": "1.0.0",
+  "description": "Automatically load an object named '.Class.js'",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kuanhuayu/requireclass.git"
+  },
+  "author": "Kuan Hua Yu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kuanhuayu/requireclass/issues"
+  },
+  "homepage": "https://github.com/kuanhuayu/requireclass#readme"
+}
