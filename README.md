@@ -1,11 +1,10 @@
 # requireclass
 Automatically load an object named '.Class.js'
 
-#Install
+# Install
 npm install requireclass.
 
-＃Example
-
+# Example
 Create an object named .Class.js.
 
 ex.
