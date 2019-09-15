@@ -1,4 +1,4 @@
-const app = require('electron').app == undefined ? require('electron').remote.app : require('electron').app;
+//const app = require('electron').app == undefined ? require('electron').remote.app : require('electron').app;
 const fs = require('fs');
 const path = require('path');
 
@@ -7,25 +7,35 @@ const path = require('path');
  * @param {*} fc 自訂物件名稱 'Class1','Class2' 
  */
 const requiceClass = (...fc) => {
-    let returnRes = {};
-
-    let cmp = '.Class.js';
-    let fi = fc.indexOf('app');
-    if (fi > -1) {
-        returnRes['app'] = app;
-        fc.splice(fi, 1);
-    }
 
     if (fc.length == 0) {
-        return returnRes;
-    }
-    else {
-        fc.forEach((v, index, arr) => {
-            fc[index] = v + cmp;
-        });
+        return {};
     }
 
-    let dir = app.getAppPath();
+    let chkRenderer = () => {
+        return (process && process.type == 'renderer');
+    }
+    let ele = chkRenderer() ? require('electron').remote : require('electron');
+    let elekey = ['BrowserView', 'BrowserWindow', 'Menu', 'MenuItem', 'Notification', 'TopLevelWindow', 'TouchBar', 'Tray',
+        'View', 'WebContentsView', 'app', 'autoUpdater', 'clipboard', 'contentTracing', 'crashReporter', 'dialog',
+        'globalShortcut', 'inAppPurchase', 'ipcMain', 'nativeImage', 'net', 'netLog', 'powerMonitor', 'powerSaveBlocker',
+        'protocol', 'screen', 'session', 'shell', 'systemPreferences', 'webContents'];
+
+    let returnRes = {};
+
+    for (let i in fc) {
+        if (elekey.indexOf(fc[i]) > -1) {
+            returnRes[fc[i]] = ele[fc[i]];
+        }
+    }
+    let cmp = '.Class.js';
+
+    fc.forEach((v, index, arr) => {
+        fc[index] = v + cmp;
+    });
+
+
+    let dir = ele.app.getAppPath();
     let list = fs.readdirSync(dir);
     list.forEach((v, index, arr) => {
         list[index] = path.join(dir, v);
@@ -57,6 +67,3 @@ const requiceClass = (...fc) => {
 module.exports = (...fclass) => {
     return requiceClass(...fclass);
 };
-
-
-
