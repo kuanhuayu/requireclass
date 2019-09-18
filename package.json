@@ -1,6 +1,6 @@
 {
   "name": "requireclass",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Automatically load an object named '.Class.js' and determine whether to use remote when processing objects in electron",
   "keywords": "require",
   "main": "index.js",

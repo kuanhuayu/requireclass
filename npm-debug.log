@@ -38,7 +38,7 @@
 18 silly publish   homepage: 'https://github.com/kuanhuayu/requireclass#readme',
 18 silly publish   readme: '# requireclass\nAutomatically load an object named \'.Class.js\' and determine whether to use remote when processing objects in electron\n\n# Install\nnpm install requireclass.\n\n# Example\nCreate an object named .Class.js.\n\nex.<br>\n  ClassName1.Class.js,ClassName2.Class.js<br><br>\n\nCustom object:<br>\n  const requireClass = require(\'requireclass\');<br>\n  const {ClassName1,ClassName2 } = requireClass(\'ClassName1\',\'ClassName2\');<br><br>\n\nElectron object:<br>\n  Use requireClass to load an electron object in the main process and renderer<br><br>\n\n  const requireClass = require(\'requireclass\');<br>\n  const {app} = requireClass(\'app\');\n\n',
 18 silly publish   readmeFilename: 'README.md',
-18 silly publish   gitHead: '399978c4de131cab30cd20fd39368a46da4ce99d',
+18 silly publish   gitHead: 'cea3a2e19e45994499f9016485d87a871ec2c9f6',
 18 silly publish   _id: 'requireclass@1.0.2',
 18 silly publish   _shasum: 'a7b832d70a81fa42cf240aa41996fc7c259e664b',
 18 silly publish   _from: '.' }
@@ -51,18 +51,18 @@
 25 silly publish uploading /home/kuan/.npm/requireclass/1.0.2/package.tgz
 26 verbose request uri https://registry.npmjs.org/requireclass
 27 verbose request sending authorization for write operation
-28 info attempt registry request try #1 at 上午8:34:12
+28 info attempt registry request try #1 at 上午8:34:58
 29 verbose request using bearer token for auth
-30 verbose request id 64ea6bdef726c3a5
+30 verbose request id 00e3060607ade3bf
 31 http request PUT https://registry.npmjs.org/requireclass
 32 http 403 https://registry.npmjs.org/requireclass
-33 verbose headers { date: 'Wed, 18 Sep 2019 00:34:13 GMT',
+33 verbose headers { date: 'Wed, 18 Sep 2019 00:34:58 GMT',
 33 verbose headers   'content-type': 'application/json',
 33 verbose headers   'transfer-encoding': 'chunked',
 33 verbose headers   connection: 'keep-alive',
 33 verbose headers   'set-cookie':
-33 verbose headers    [ '__cfduid=de223dad64106f3420b19f2783c7d28681568766853; expires=Thu, 17-Sep-20 00:34:13 GMT; path=/; domain=.npmjs.org; HttpOnly' ],
-33 verbose headers   'cf-ray': '517f3b9f4f46dad4-TPE',
+33 verbose headers    [ '__cfduid=d3125d5f3dba3575c4ac37777e2a9688f1568766898; expires=Thu, 17-Sep-20 00:34:58 GMT; path=/; domain=.npmjs.org; HttpOnly' ],
+33 verbose headers   'cf-ray': '517f3cb98dd7dad0-TPE',
 33 verbose headers   'expect-ct': 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"',
 33 verbose headers   vary: 'Accept-Encoding',
 33 verbose headers   server: 'cloudflare',
