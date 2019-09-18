@@ -1,0 +1,93 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'publish' ]
+2 info using npm@3.5.2
+3 info using node@v8.10.0
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: '/home/kuan/文件/ElectronApp/requireclass',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory /home/kuan/.npm/requireclass/1.0.2/package.tgz not in flight; packing
+9 info lifecycle requireclass@1.0.2~prepublish: requireclass@1.0.2
+10 silly lifecycle requireclass@1.0.2~prepublish: no script for prepublish, continuing
+11 verbose tar pack [ '/home/kuan/.npm/requireclass/1.0.2/package.tgz',
+11 verbose tar pack   '/home/kuan/文件/ElectronApp/requireclass' ]
+12 verbose tarball /home/kuan/.npm/requireclass/1.0.2/package.tgz
+13 verbose folder /home/kuan/文件/ElectronApp/requireclass
+14 verbose addLocalTarball adding from inside cache /home/kuan/.npm/requireclass/1.0.2/package.tgz
+15 silly cache afterAdd requireclass@1.0.2
+16 verbose afterAdd /home/kuan/.npm/requireclass/1.0.2/package/package.json not in flight; writing
+17 verbose afterAdd /home/kuan/.npm/requireclass/1.0.2/package/package.json written
+18 silly publish { name: 'requireclass',
+18 silly publish   version: '1.0.2',
+18 silly publish   description: 'Automatically load an object named \'.Class.js\' and determine whether to use remote when processing objects in electron',
+18 silly publish   keywords: [ 'require' ],
+18 silly publish   main: 'index.js',
+18 silly publish   scripts: { test: 'echo "Error: no test specified" && exit 1' },
+18 silly publish   repository:
+18 silly publish    { type: 'git',
+18 silly publish      url: 'git+https://github.com/kuanhuayu/requireclass.git' },
+18 silly publish   author: { name: 'Kuan Hua Yu' },
+18 silly publish   license: 'MIT',
+18 silly publish   bugs: { url: 'https://github.com/kuanhuayu/requireclass/issues' },
+18 silly publish   homepage: 'https://github.com/kuanhuayu/requireclass#readme',
+18 silly publish   readme: '# requireclass\nAutomatically load an object named \'.Class.js\' and determine whether to use remote when processing objects in electron\n\n# Install\nnpm install requireclass.\n\n# Example\nCreate an object named .Class.js.\n\nex.<br>\n  ClassName1.Class.js,ClassName2.Class.js<br><br>\n\nCustom object:<br>\n  const requireClass = require(\'requireclass\');<br>\n  const {ClassName1,ClassName2 } = requireClass(\'ClassName1\',\'ClassName2\');<br><br>\n\nElectron object:<br>\n  Use requireClass to load an electron object in the main process and renderer<br><br>\n\n  const requireClass = require(\'requireclass\');<br>\n  const {app} = requireClass(\'app\');\n\n',
+18 silly publish   readmeFilename: 'README.md',
+18 silly publish   gitHead: '399978c4de131cab30cd20fd39368a46da4ce99d',
+18 silly publish   _id: 'requireclass@1.0.2',
+18 silly publish   _shasum: 'a7b832d70a81fa42cf240aa41996fc7c259e664b',
+18 silly publish   _from: '.' }
+19 verbose getPublishConfig undefined
+20 silly mapToRegistry name requireclass
+21 silly mapToRegistry using default registry
+22 silly mapToRegistry registry https://registry.npmjs.org/
+23 silly mapToRegistry uri https://registry.npmjs.org/requireclass
+24 verbose publish registryBase https://registry.npmjs.org/
+25 silly publish uploading /home/kuan/.npm/requireclass/1.0.2/package.tgz
+26 verbose request uri https://registry.npmjs.org/requireclass
+27 verbose request sending authorization for write operation
+28 info attempt registry request try #1 at 上午8:34:12
+29 verbose request using bearer token for auth
+30 verbose request id 64ea6bdef726c3a5
+31 http request PUT https://registry.npmjs.org/requireclass
+32 http 403 https://registry.npmjs.org/requireclass
+33 verbose headers { date: 'Wed, 18 Sep 2019 00:34:13 GMT',
+33 verbose headers   'content-type': 'application/json',
+33 verbose headers   'transfer-encoding': 'chunked',
+33 verbose headers   connection: 'keep-alive',
+33 verbose headers   'set-cookie':
+33 verbose headers    [ '__cfduid=de223dad64106f3420b19f2783c7d28681568766853; expires=Thu, 17-Sep-20 00:34:13 GMT; path=/; domain=.npmjs.org; HttpOnly' ],
+33 verbose headers   'cf-ray': '517f3b9f4f46dad4-TPE',
+33 verbose headers   'expect-ct': 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"',
+33 verbose headers   vary: 'Accept-Encoding',
+33 verbose headers   server: 'cloudflare',
+33 verbose headers   'content-encoding': 'gzip' }
+34 verbose request invalidating /home/kuan/.npm/registry.npmjs.org/requireclass on PUT
+35 error publish Failed PUT 403
+36 verbose stack Error: You cannot publish over the previously published versions: 1.0.2. : requireclass
+36 verbose stack     at makeError (/usr/share/npm/node_modules/npm-registry-client/lib/request.js:264:12)
+36 verbose stack     at CachingRegistryClient.<anonymous> (/usr/share/npm/node_modules/npm-registry-client/lib/request.js:252:14)
+36 verbose stack     at /usr/share/npm/node_modules/npm-registry-client/lib/request.js:178:7
+36 verbose stack     at Gunzip.onEnd (zlib.js:131:5)
+36 verbose stack     at emitNone (events.js:111:20)
+36 verbose stack     at Gunzip.emit (events.js:208:7)
+36 verbose stack     at endReadableNT (_stream_readable.js:1064:12)
+36 verbose stack     at _combinedTickCallback (internal/process/next_tick.js:138:11)
+36 verbose stack     at process._tickCallback (internal/process/next_tick.js:180:9)
+37 verbose statusCode 403
+38 verbose pkgid requireclass
+39 verbose cwd /home/kuan/文件/ElectronApp/requireclass
+40 error Linux 4.15.0-62-generic
+41 error argv "/usr/bin/node" "/usr/bin/npm" "publish"
+42 error node v8.10.0
+43 error npm  v3.5.2
+44 error code E403
+45 error You cannot publish over the previously published versions: 1.0.2. : requireclass
+46 error If you need help, you may report this error at:
+46 error     <https://github.com/npm/npm/issues>
+47 verbose exit [ 1, true ]
