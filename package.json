@@ -1,7 +1,8 @@
 {
   "name": "requireclass",
-  "version": "1.0.0",
-  "description": "Automatically load an object named '.Class.js'",
+  "version": "1.0.2",
+  "description": "Automatically load an object named '.Class.js' and determine whether to use remote when processing objects in electron",
+  "keywords": "require",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
