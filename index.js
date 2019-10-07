@@ -15,28 +15,50 @@ const requiceClass = (...fc) => {
     let chkRenderer = () => {
         return (process && process.type == 'renderer');
     }
+
+    let getAppPath = () => {
+        let av = process.argv;
+        for (let i; i > av.length; i++) {
+            if (av[i].indexOf('--app-path') == 0) {
+                return av[i] = av[i].substring(av[i].indexOf('=') + 1);
+            }
+        }
+        return process.cwd();
+    }
+
     let ele = chkRenderer() ? require('electron').remote : require('electron');
-    let elekey = ['BrowserView', 'BrowserWindow', 'Menu', 'MenuItem', 'Notification', 'TopLevelWindow', 'TouchBar', 'Tray',
-        'View', 'WebContentsView', 'app', 'autoUpdater', 'clipboard', 'contentTracing', 'crashReporter', 'dialog',
-        'globalShortcut', 'inAppPurchase', 'ipcMain', 'nativeImage', 'net', 'netLog', 'powerMonitor', 'powerSaveBlocker',
-        'protocol', 'screen', 'session', 'shell', 'systemPreferences', 'webContents'];
 
     let returnRes = {};
 
-    for (let i in fc) {
-        if (elekey.indexOf(fc[i]) > -1) {
-            returnRes[fc[i]] = ele[fc[i]];
+    if (typeof ele == 'object') {
+        let elekey = ['BrowserView', 'BrowserWindow', 'Menu', 'MenuItem', 'Notification', 'TopLevelWindow', 'TouchBar', 'Tray',
+            'View', 'WebContentsView', 'app', 'autoUpdater', 'clipboard', 'contentTracing', 'crashReporter', 'dialog',
+            'globalShortcut', 'inAppPurchase', 'ipcMain', 'nativeImage', 'net', 'netLog', 'powerMonitor', 'powerSaveBlocker',
+            'protocol', 'screen', 'session', 'shell', 'systemPreferences', 'webContents'];
+
+        for (let i in fc) {
+            if (elekey.indexOf(fc[i]) > -1) {
+                returnRes[fc[i]] = ele[fc[i]];
+            }
         }
     }
+
     let cmp = '.Class.js';
 
+    let dir = getAppPath();
+
     fc.forEach((v, index, arr) => {
-        fc[index] = v + cmp;
+        if (fc[index] == 'appPath') {
+            returnRes['appPath'] = dir;
+            fc.splice(index, 1);
+        }
+        else {
+            fc[index] = v + cmp;
+        }
     });
 
-
-    let dir = ele.app.getAppPath();
     let list = fs.readdirSync(dir);
+
     list.forEach((v, index, arr) => {
         list[index] = path.join(dir, v);
     });
