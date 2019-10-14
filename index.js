@@ -18,12 +18,21 @@ const requiceClass = (...fc) => {
 
     let getAppPath = () => {
         let av = process.argv;
-        for (let i; i > av.length; i++) {
+        for (let i = 0; i < av.length; i++) {
             if (av[i].indexOf('--app-path') == 0) {
                 return av[i] = av[i].substring(av[i].indexOf('=') + 1);
             }
         }
-        return process.cwd();
+        av = process.mainModule.paths;
+        let base = process.cwd();
+        for (let i = av.length - 1; i >= 0; i--) {
+            if (av[i].indexOf(base + path.sep) == 0) {
+                if (fs.existsSync(av[i])) {
+                    return path.dirname(av[i]);
+                }
+            }
+        }
+        return base;
     }
 
     let ele = chkRenderer() ? require('electron').remote : require('electron');
