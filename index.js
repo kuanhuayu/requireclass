@@ -17,6 +17,7 @@ const requiceClass = (...fc) => {
     }
 
     let getAppPath = () => {
+
         let av = process.argv;
         for (let i = 0; i < av.length; i++) {
             if (av[i].indexOf('--app-path') == 0) {
@@ -35,21 +36,24 @@ const requiceClass = (...fc) => {
         return base;
     }
 
-    let ele = chkRenderer() ? require('electron').remote : require('electron');
-
     let returnRes = {};
+    try {
+        let ele = chkRenderer() ? require('electron').remote : require('electron');
+        if (typeof ele == 'object') {
+            let elekey = ['BrowserView', 'BrowserWindow', 'Menu', 'MenuItem', 'Notification', 'TopLevelWindow', 'TouchBar', 'Tray',
+                'View', 'WebContentsView', 'app', 'autoUpdater', 'clipboard', 'contentTracing', 'crashReporter', 'dialog',
+                'globalShortcut', 'inAppPurchase', 'ipcMain', 'nativeImage', 'net', 'netLog', 'powerMonitor', 'powerSaveBlocker',
+                'protocol', 'screen', 'session', 'shell', 'systemPreferences', 'webContents'];
 
-    if (typeof ele == 'object') {
-        let elekey = ['BrowserView', 'BrowserWindow', 'Menu', 'MenuItem', 'Notification', 'TopLevelWindow', 'TouchBar', 'Tray',
-            'View', 'WebContentsView', 'app', 'autoUpdater', 'clipboard', 'contentTracing', 'crashReporter', 'dialog',
-            'globalShortcut', 'inAppPurchase', 'ipcMain', 'nativeImage', 'net', 'netLog', 'powerMonitor', 'powerSaveBlocker',
-            'protocol', 'screen', 'session', 'shell', 'systemPreferences', 'webContents'];
-
-        for (let i in fc) {
-            if (elekey.indexOf(fc[i]) > -1) {
-                returnRes[fc[i]] = ele[fc[i]];
+            for (let i in fc) {
+                if (elekey.indexOf(fc[i]) > -1) {
+                    returnRes[fc[i]] = ele[fc[i]];
+                }
             }
         }
+    }
+    catch (e) {
+
     }
 
     let cmp = '.Class.js';
@@ -90,8 +94,8 @@ const requiceClass = (...fc) => {
 
             });
         }
-
     }
+
     return returnRes;
 }
 
