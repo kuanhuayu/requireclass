@@ -18,22 +18,34 @@ const requiceClass = (...fc) => {
 
     let getAppPath = () => {
 
-        let av = process.argv;
-        for (let i = 0; i < av.length; i++) {
-            if (av[i].indexOf('--app-path') == 0) {
-                return av[i] = av[i].substring(av[i].indexOf('=') + 1);
-            }
-        }
-        av = process.mainModule.paths;
+        // let av = process.argv;
+        // for (let i = 0; i < av.length; i++) {
+        //     if (av[i].indexOf('--app-path') == 0) {
+        //         return av[i].substring(av[i].indexOf('=') + 1);
+        //     }
+        // }
+
         let base = process.cwd();
-        for (let i = av.length - 1; i >= 0; i--) {
-            if (av[i].indexOf(base + path.sep) == 0) {
-                if (fs.existsSync(av[i])) {
-                    return path.dirname(av[i]);
-                }
-            }
+        if (fs.existsSync(path.join(base, 'node_modules'))) {
+            return base;
         }
-        return base;
+        // ATICaliper / ATICaliper - win32 - ia32 / resources / app / node_modules
+        base = path.join(base, 'resources', 'app');
+        if (fs.existsSync(path.join(base, 'node_modules'))) {
+            return base;
+        }
+        // console.log(base, process);
+        // if (process.mainModule !== undefined) {
+        //     av = process.mainModule.paths;
+        //     for (let i = av.length - 1; i >= 0; i--) {
+        //         if (av[i].indexOf(base + path.sep) == 0) {
+        //             if (fs.existsSync(av[i])) {
+        //                 return path.dirname(av[i]);
+        //             }
+        //         }
+        //     }
+        // }
+        return process.cwd();
     }
 
     let returnRes = {};
@@ -50,10 +62,13 @@ const requiceClass = (...fc) => {
                     returnRes[fc[i]] = ele[fc[i]];
                 }
             }
+            if (fc.indexOf('electron') > -1) {
+                returnRes['electron'] = ele;
+            }
         }
     }
     catch (e) {
-
+        console.log(e);
     }
 
     let cmp = '.Class.js';
